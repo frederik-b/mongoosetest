@@ -1,0 +1,27 @@
+{
+  "extends": "tslint-config-sevenval",
+  "rules": {
+    "array-type": [true, "generic"],
+    "arrow-parens": false,
+    "no-conditional-assignment": false,
+    "no-console": false,
+    "no-string-literal": false,
+    "quotemark": [true, "single", "avoid-escape"],
+    "semicolon": [true, "never"],
+    "variable-name": [
+      true,
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "ban-keywords",
+      "check-format"
+    ],
+    "interface-name": [true, "always-prefix"],
+    "ordered-imports": true,
+    "no-trailing-whitespace": true,
+    "trailing-comma": true,
+    "no-unnecessary-type-assertion": [true],
+    "prefer-object-spread": true,
+    "prefer-switch": true,
+    "space-within-parens": [true, 0]
+  }
+}

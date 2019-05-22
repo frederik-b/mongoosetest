@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -eu
+
+docker build -f ./test.Dockerfile -t mongoosetest .
+
+function cleanup {
+  echo + docker-compose down --remove-orphans; true
+  docker-compose down --remove-orphans; true
+}
+cleanup # remove leftover services (and orphans) from last build (cleanup)
+trap cleanup EXIT # remove leftover services (and orphans) when done (success or failure)
+
+echo + docker-compose run ci "$@"
+docker-compose run ci "$@"

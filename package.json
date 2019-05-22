@@ -1,0 +1,29 @@
+{
+  "name": "momgoosetest",
+  "private": true,
+  "author": "Sevenval Technologies GmbH",
+  "version": "0.0.1",
+  "scripts": {
+    "prebuild": "rm -rf dist/",
+    "build": "yarn tsc",
+    "lint": "tslint --project tsconfig.json --fix --format codeFrame",
+    "test": "./test"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.5.0",
+    "@types/mongoose-paginate": "^5.0.6",
+    "migrate-mongo": "^5.0.1",
+    "mongoose": "^5.4.22",
+    "mongoose-delete": "^0.5.0",
+    "mongoose-paginate": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.2",
+    "@types/node": "^11.11.5",
+    "mocha": "^6.1.2",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.16.0",
+    "tslint-config-sevenval": "^2.0.0",
+    "typescript": "^3.3.4000"
+  }
+}

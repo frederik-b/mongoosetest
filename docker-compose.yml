@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /usr/local/opt/secrets/db.key
+    healthcheck:
+      test: ['CMD-SHELL', '(( `mongo --quiet --eval ''db.runCommand("ping").ok''` == 1 ))']
+      interval: 1s
+      timeout: 1s
+      retries: 60
+    secrets:
+      - source: db.key
+        target: /usr/local/opt/secrets/db.key
+
+  ci:
+    image: mongoosetest
+    environment:
+      TEST: 'true'
+    depends_on:
+      - 'db'
+    secrets:
+      - source: db.key
+        target: /usr/local/opt/secrets/db.key
+
+secrets:
+  db.key:
+    file: ./db.key
